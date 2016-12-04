@@ -37,7 +37,7 @@ struct SingleLineCommentParser {
         
         //keep seeking until we find "\n", then terminate and return everything between
         let end = [Const.NewLine]
-        let (collected, _) = try reader.collectUntil(terminator: end)
+        let (collected, _) = try reader.collectUntil(end)
         
         //here we don't actually care if we don't find the terminator, it just means
         //the user didn't end their file with a newline
@@ -57,7 +57,7 @@ struct MultiLineCommentParser {
 
         //keep seeking until we find "\n", then terminate and return everything between
         let end = [Const.Star, Const.Solidus]
-        let (collected, foundTerminator) = try reader.collectUntil(terminator: end)
+        let (collected, foundTerminator) = try reader.collectUntil(end)
         
         //multi-line comment must be terminated
         guard foundTerminator else {

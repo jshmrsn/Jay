@@ -61,7 +61,7 @@ extension JSON {
 
 struct NativeTypeConverter {
     
-    func convertPair(k: Any, v: Any) throws -> (String, JSON) {
+    func convertPair(_ k: Any, v: Any) throws -> (String, JSON) {
         guard let key = k as? String else { throw JayError.keyIsNotString(k) }
         let value = try self.toJayType(v as Any)
         return (key, value)
@@ -175,8 +175,8 @@ struct NativeTypeConverter {
         case let num as NSNumber:
             //if the double value equals the int->double value, let's call it
             //an int. otherwise call it a value.
-            if Double(num.intValue) == num.doubleValue {
-                return .number(.integer(Int(num.intValue)))
+            if Double(num.int32Value) == num.doubleValue {
+                return .number(.integer(Int(num.int32Value)))
             }
             return .number(.double(num.doubleValue))
         //string (or anything representable as string that didn't match above)

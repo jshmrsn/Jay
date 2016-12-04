@@ -27,26 +27,26 @@ func <<<(stream: JsonOutputStream, value: [UInt8]) -> JsonOutputStream {
     return stream
 }
 
-public class ConsoleOutputStream: JsonOutputStream {
+open class ConsoleOutputStream: JsonOutputStream {
     
     public init() { }
 
     /// Writes the textual representation of the provided bytes into the standard output.
-    public func print(_ bytes: [UInt8]) {
+    open func print(_ bytes: [UInt8]) {
         let str = try? bytes.string()
         Swift.print(str ?? "UNFORMATTABLE DATA", terminator: "")
     }
 }
 
-public class ByteArrayOutputStream: JsonOutputStream {
+open class ByteArrayOutputStream: JsonOutputStream {
     
-    public var bytes: [UInt8]
+    open var bytes: [UInt8]
     
     public init() {
         self.bytes = []
     }
     
-    public func print(_ bytes: [UInt8]) {
+    open func print(_ bytes: [UInt8]) {
         self.bytes += bytes
     }
 }

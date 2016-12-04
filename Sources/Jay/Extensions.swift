@@ -76,7 +76,7 @@ extension Collection where Iterator.Element == UInt8 {
     /// as the second, if found (empty array if found at the end).
     /// Otherwise first array contains the original
     /// collection and the second is nil.
-    func splitAround(delimiter: [JChar]) -> ([JChar], [JChar]?) {
+    func splitAround(_ delimiter: [JChar]) -> ([JChar], [JChar]?) {
         
         let orig = Array(self)
         let end = orig.endIndex

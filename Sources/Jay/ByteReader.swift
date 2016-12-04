@@ -8,8 +8,8 @@
 
 class ByteReader: Reader {
     
-    private let content: [JChar]
-    private var cursor: Array<JChar>.Index
+    fileprivate let content: [JChar]
+    fileprivate var cursor: Array<JChar>.Index
     
     init(content: [JChar]) {
         self.content = content

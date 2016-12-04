@@ -99,7 +99,7 @@ extension Reader {
     // Gathers all bytes until `terminator` is found, returns everything except the terminator
     // the cursor is right after the terminator
     // If the end of `self` is encountered without finding `terminator`, `foundTerminator` is false
-    func collectUntil(terminator: [JChar]) throws -> (collected: [JChar], foundTerminator: Bool) {
+    func collectUntil(_ terminator: [JChar]) throws -> (collected: [JChar], foundTerminator: Bool) {
         var collected: [UInt8] = []
         var nextBuffer = CircularBuffer<UInt8>(size: terminator.count, defaultValue: 0)
         while !isDone() {
@@ -150,8 +150,8 @@ extension Reader {
 struct CircularBuffer<T: Equatable> {
     
     let size: Int
-    private var _cursor: Int = 0
-    private var _storage: [T]
+    fileprivate var _cursor: Int = 0
+    fileprivate var _storage: [T]
     
     init(size: Int, defaultValue: T) {
         self.size = size
